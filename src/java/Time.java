@@ -77,6 +77,7 @@ public class Time {
     }
 
         public static void main(String[] args) throws IOException {
+          /*
             Date teraz = new Date();
             Date NajblizszeZajecia = new Date();
             Date NajblizszaPrzerwa = new Date();
@@ -102,6 +103,6 @@ public class Time {
                 X = (czas2 - czas1) / 60000;
                 System.out.println(X + " minut do końca zajęć.");
             }
-
+*/
     }
 }

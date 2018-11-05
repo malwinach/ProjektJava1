@@ -48,6 +48,7 @@ public class Person {
     public static void main(String[] args) throws IOException {
 
         SchedulerFile.Start();
+        SchedulerPrzerw.Start();
         Map<String, String> mapa = new HashMap<String, String>();
         FastListMultimap<String, String> Dane = FastListMultimap.newMultimap();
         String DoZapisu = new String();
@@ -55,7 +56,7 @@ public class Person {
             System.out.println("Wprowadź miasto:");
             Scanner odczyt = new Scanner(System.in);
             String miasto = odczyt.nextLine();
-            if (miasto.equals("exit")) {
+            if (miasto.equals("")) {
                 System.exit(0);
             }
             else {

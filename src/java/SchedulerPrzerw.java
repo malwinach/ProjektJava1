@@ -25,12 +25,12 @@ public class SchedulerPrzerw {
 
             // define the job and tie it to our HelloJob class
             JobDetail job = newJob(JobTime.class)
-                    .withIdentity("job1", "group1")
+                    .withIdentity("job2", "group2")
                     .build();
 
             // Trigger the job to run now, and then repeat every 1 seconds
             Trigger trigger = newTrigger()
-                    .withIdentity("trigger1", "group1")
+                    .withIdentity("trigger2", "group2")
                     .startNow()
                     .withSchedule(cronSchedule("0 0/1 * * * ? *"))
                     .build();
