@@ -18,7 +18,7 @@ public class JobPerson implements org.quartz.Job{
                 BufferedWriter writer = new BufferedWriter(new FileWriter("SpisLudnosci.txt"));
                 writer.write(a);
                 writer.close();
-                System.out.println("Zaktualizowano plik.");
+//                System.out.println("Zaktualizowano plik.");
             }
             catch (
                     IOException e) {
