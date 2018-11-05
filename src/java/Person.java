@@ -47,7 +47,7 @@ public class Person {
 
     public static void main(String[] args) throws IOException {
 
-
+        SchedulerFile.Start();
         Map<String, String> mapa = new HashMap<String, String>();
         FastListMultimap<String, String> Dane = FastListMultimap.newMultimap();
         String DoZapisu = new String();
@@ -56,11 +56,6 @@ public class Person {
             Scanner odczyt = new Scanner(System.in);
             String miasto = odczyt.nextLine();
             if (miasto.equals("exit")) {
-                DoZapisu=(Dane.keyMultiValuePairsView().toString());
-                DoZapisu=ToPrint(DoZapisu);
-                aviva = DoZapisu;
-
-
                 System.exit(0);
             }
             else {
@@ -81,6 +76,10 @@ public class Person {
                     }
                     else {
                         Dane.put(miasto, imiepesel);
+                        DoZapisu=(Dane.keyMultiValuePairsView().toString());
+                        DoZapisu=ToPrint(DoZapisu);
+                        aviva = DoZapisu;
+
                     }
                 }
             }

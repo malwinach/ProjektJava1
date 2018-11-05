@@ -1,5 +1,4 @@
 import org.quartz.JobDetail;
-import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
 import org.quartz.Trigger;
 import org.quartz.impl.StdSchedulerFactory;
@@ -8,13 +7,18 @@ import static org.quartz.CronScheduleBuilder.cronSchedule;
 import static org.quartz.JobBuilder.newJob;
 import static org.quartz.TriggerBuilder.newTrigger;
 
-public class Sheduler {
+public class SchedulerFile {
 
     public static void main(String[] args) {
+        SchedulerFile.Start();
+
+    }
+    public static void Start() {
+
 
         try {
             // Grab the Scheduler instance from the Factory
-            Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
+            org.quartz.Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
 
             // and start it off
             scheduler.start();
