@@ -19,7 +19,7 @@ public class Time {
     }
 
     public static Boolean PoZajeciach (Date teraz) {
-        if (teraz.after(dateOf(18, 45, 00)) && teraz.before(dateOf(23, 59, 00))) {
+        if ((teraz.after(dateOf(18, 45, 00)) && teraz.before(dateOf(23, 59, 00)))) {
             return true;
         } else {
             return false;
@@ -27,9 +27,10 @@ public class Time {
     }
 
     public static Date ClosestClass(Date teraz){
-        Date Closest;
-        if(teraz.after(dateOf(00, 00,00)) && teraz.before(dateOf(8, 15, 00))){
-            Closest = dateOf((8,15,00));
+        Date Closest = new Date();
+        if(teraz.after(dateOf(00, 00,00)) && teraz.before(dateOf(8, 15, 00)))
+        {
+            Closest = dateOf(8,15,00);
         }
         else if(teraz.after(dateOf(9, 45,00)) && teraz.before(dateOf(10, 00, 00))){
             Closest = dateOf(10, 00, 00);
@@ -53,9 +54,9 @@ public class Time {
     }
 
     public static Date ClosestPeriod(Date teraz){
-        Date ClosestPeriod;
+        Date ClosestPeriod = new Date();
         if(teraz.after(dateOf(8, 15,00)) && teraz.before(dateOf(9, 45, 00))){
-            ClosestPeriod = dateOf((9,45,00));
+            ClosestPeriod = dateOf(9,45,00);
         }
         else if(teraz.after(dateOf(10, 00,00)) && teraz.before(dateOf(11, 30, 00))){
             ClosestPeriod = dateOf(11, 30, 00);
@@ -79,21 +80,27 @@ public class Time {
             Date teraz = new Date();
             Date NajblizszeZajecia = new Date();
             Date NajblizszaPrzerwa = new Date();
-            Time X = new Time();
-            if(Przerwa(teraz)){
-                NajblizszeZajecia = ClosestClass(teraz);
-                // X = Roznica(teraz, NajblizszeZajecia);
-                System.out.print(NajblizszeZajecia)
-                System.out.println("X" + "minut do końca przerwy.");
+            long X, czas1, czas2;
+            if(Time.Przerwa(teraz)){
+                NajblizszeZajecia = Time.ClosestClass(teraz);
+                czas1 = teraz.getTime();
+                czas2 = NajblizszeZajecia.getTime();
+                X = (czas2 - czas1) / 60000;
+                System.out.print(NajblizszeZajecia);
+                System.out.println(X + " minut do końca przerwy.");
             }
-            else if(PoZajeciach(teraz)) {
-                //
-                System.out.println("X" + "minut do końca przerwy.")
+            else if(Time.PoZajeciach(teraz)) {
+                czas1 = teraz.getTime();
+                czas2 = NajblizszeZajecia.getTime();
+                X = ((czas2 - czas1) / 60000) + 1440;
+                System.out.println(X + " minut do końca przerwy.");
             }
-            else{
-                NajblizszaPrzerwa = ClosestPeriod(teraz);
-                // X = Roznica(teraz, NajblizszaPrzerwa)
-                System.out.println("X" + "minut do końca zajęć.");
+            else {
+                NajblizszaPrzerwa = Time.ClosestPeriod(teraz);
+                czas1 = teraz.getTime();
+                czas2 = NajblizszaPrzerwa.getTime();
+                X = (czas2 - czas1) / 60000;
+                System.out.println(X + " minut do końca zajęć.");
             }
 
     }

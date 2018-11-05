@@ -1,43 +1,36 @@
 import org.quartz.JobExecutionContext;
-import java.io.IOException;
+
 import java.util.Date;
 
-public class JobPerson implements org.quartz.Job{
+public class JobTime implements org.quartz.Job{
 
 
     public void execute(JobExecutionContext jobExecutionContext) {
 
-        String a = Person.getAviva();
 
-
-        try {
             Date teraz = new Date();
             Date NajblizszeZajecia = new Date();
             Date NajblizszaPrzerwa = new Date();
-            Time X = new Time();
-            if(Time.Przerwa(teraz)){
+            long X, czas1, czas2;
+            if (Time.Przerwa(teraz)) {
                 NajblizszeZajecia = Time.ClosestClass(teraz);
-                // X = Roznica(teraz, NajblizszeZajecia);
-                System.out.print(NajblizszeZajecia)
-                System.out.println("X" + "minut do końca przerwy.");
-            }
-            else if(Time.PoZajeciach(teraz)) {
-                //
-                System.out.println("X" + "minut do końca przerwy.")
-            }
-            else {
+                czas1 = teraz.getTime();
+                czas2 = NajblizszeZajecia.getTime();
+                X = (czas2 - czas1) / 60000;
+                System.out.print(NajblizszeZajecia);
+                System.out.println(X + " minut do końca przerwy.");
+            } else if (Time.PoZajeciach(teraz)) {
+                czas1 = teraz.getTime();
+                czas2 = NajblizszeZajecia.getTime();
+                X = ((czas2 - czas1) / 60000) + 1440;
+                System.out.println(X + " minut do końca przerwy.");
+            } else {
                 NajblizszaPrzerwa = Time.ClosestPeriod(teraz);
-                // X = Roznica(teraz, NajblizszaPrzerwa)
-                System.out.println("X" + "minut do końca zajęć.");
-                System.out.println("Zaktualizowano plik.");
+                czas1 = teraz.getTime();
+                czas2 = NajblizszaPrzerwa.getTime();
+                X = (czas2 - czas1) / 60000;
+                System.out.println(X + " minut do końca zajęć.");
             }
-        }
-        catch (
-                IOException e) {
-            e.printStackTrace();
-            System.out.println("Nie wykonano.");
-
-        }
     }
 }
 
