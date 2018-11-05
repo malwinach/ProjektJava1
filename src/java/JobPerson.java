@@ -24,7 +24,7 @@ public class JobPerson implements org.quartz.Job{
             catch (
                     IOException e) {
                 e.printStackTrace();
-                System.out.println("Nie wykonano");
+                System.out.println("Nie zaktualizowano pliku.");
 
             }
         }
